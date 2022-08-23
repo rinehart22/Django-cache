@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app import views
+import debug_toolbar
+from app.views import recipes_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
