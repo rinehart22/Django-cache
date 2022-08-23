@@ -12,5 +12,41 @@
 
     <h4> devops</h4> 
    
+    
+    
+    <-----------this is for template cache----------!>
+
+{% load cache %}
+
+<html>
+<head>
+  <title>Recipes</title>
+  <style>
+      body {
+          background-color:yellow;
+        }
+  </style>
+</head>
+<body>
+
+{% cache 500 recipe %}
+
+
+{% for recipe in recipes %}
+  <h1>{{ recipe.name }}</h1>
+  {% autoescape off %}
+    <p>{{ recipe.desc }}</p>
+  {% endautoescape %}
+  <h2>Ingredients</h2>
+  <ul>
+    {% for ingredient in recipe.ingredient_set.all %}
+    <li>{{ ingredient.description }}</li>
+    {% endfor %}
+  </ul>
+
+{% endfor %}
+{% endcache %}
+</body>
+</html>
 </body>
 </html>
