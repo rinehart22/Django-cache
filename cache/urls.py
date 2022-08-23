@@ -20,4 +20,6 @@ from app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),
+    path('__debug__/', include(debug_toolbar.urls)),
+    path('rec', recipes_view),
 ]
